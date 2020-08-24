@@ -12,6 +12,43 @@
   "activationEvents": [
     "*"
   ],
+  "contributes": {
+    "configuration": {
+        "type": "object",
+        "title": "WorkClock",
+        "properties": {
+          "workClock.displaySymbol": {
+            "type": "string",
+            "default": "circle",
+            "description": "进度展示符号",
+            "enum": ["circle", "mahjong"],
+            "enumDescriptions": ["圆形", "麻将"]
+          },
+          "workClock.startTime": {
+            "type": "string",
+            "default": "09:00",
+            "description": "上班时间"
+          },
+          "workClock.endTime": {
+            "type": "string",
+            "default": "18:00",
+            "description": "下班时间"
+          },
+          "workClock.position": {
+            "type": "string",
+            "default": "right",
+            "description": "时钟位置",
+            "enum": ["left", "right"],
+            "enumDescriptions": ["左侧", "右侧"]
+          },
+          "workClock.priority": {
+            "type": "number",
+            "default": 100,
+            "description": "位置权重"
+          }
+        }
+    }
+  },
   "main": "./out/extension.js",
   "scripts": {
     "vscode:prepublish": "npm run compile",
