@@ -14,8 +14,8 @@ export default () => {
 	const day = endMoment.valueOf() - startMoment.valueOf(); // 一个工作日的时长
   const dayHours = Math.round(day / 1000 / 60 / 60);
 
-  const displaySymbol = vscode.workspace.getConfiguration().get('workClock.displaySymbol'); // 从配置获取
-  const processSymbol = symbols[displaySymbol];
+  const displaySymbol: any = vscode.workspace.getConfiguration().get('workClock.displaySymbol'); // 从配置获取
+  const processSymbol = symbols(displaySymbol);
 
 	let processBar;
 	let processNum;

@@ -5,7 +5,7 @@ export function activate(context: vscode.ExtensionContext) {
 	const position = vscode.workspace.getConfiguration().get('workClock.position');
 	const priority = vscode.workspace.getConfiguration().get('workClock.priority');
 	const statusBarItem: vscode.StatusBarItem = vscode.window.createStatusBarItem(
-		position === 'left' ? vscode.StatusBarAlignment.Left : vscode.StatusBarAlignment.Right, priority);
+		position === 'left' ? vscode.StatusBarAlignment.Left : vscode.StatusBarAlignment.Right, priority as number);
 	context.subscriptions.push(statusBarItem);
 	statusBarItem.show();
 	renderClock(statusBarItem);
