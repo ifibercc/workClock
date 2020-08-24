@@ -1,4 +1,4 @@
-<p align="center"><img src="https://github.com/ifibercc/workClock/blob/master/images/icon.jpg" alt="logo" width="150"></p>
+<p align="center"><img src="https://github.com/ifibercc/workClock/blob/master/images/icon.png" alt="logo" width="150"></p>
 <h1 align="center">workClock</h1>
 <p align="center">🍭 Display percent clock for one workday.</p>
 <p align="center">
