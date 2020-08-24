@@ -1,8 +1,16 @@
 {
   "name": "work-clock",
   "displayName": "Work Clock",
-  "description": "Display percent clock for a workday.",
-  "version": "0.0.1",
+  "description": "Display percent clock for one workday.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Fitz",
+    "email": "ifibercc@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ifibercc/workClock.git"
+  },
   "engines": {
     "vscode": "^1.48.0"
   },
