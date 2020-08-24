@@ -9,7 +9,7 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(statusBarItem);
 	statusBarItem.show();
 	renderClock(statusBarItem);
-	setInterval(() => renderClock(statusBarItem), 60 * 1000);
+	setInterval(() => renderClock(statusBarItem), 5 * 1000);
 }
 
 export function deactivate() {}
