@@ -9,4 +9,4 @@
 </p>
 
 ## Preview
-![preview](https://github.com/ifibercc/writeUML/blob/master/images/preview.png)
+![preview](https://github.com/ifibercc/workClock/blob/master/images/preview.png)
