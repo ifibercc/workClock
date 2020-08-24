@@ -1,27 +1,47 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
+const moment = require('moment');
 
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
-
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "work-clock" is now active!');
-
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('work-clock.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
-
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from Work Clock!');
-	});
-
-	context.subscriptions.push(disposable);
+	const startTime = '09:00';
+	const endTime = '23:50';
+	const today = moment().format('YYYY-MM-DD');
+	const startMoment = moment(`${today} ${startTime}`);
+	const endMoment = moment(`${today} ${endTime}`);
+	const day = endMoment.valueOf() - startMoment.valueOf();
+	const dayHours = Math.round(day / 1000 / 60 / 60);
+	console.log('🍭: activate -> dayHours', dayHours);
+	const emptyChar = '○';
+	const passedChar = '●';
+	const tiredChar = '◎';
+	let finalText = '';
+	let process;
+	if (moment().isSameOrBefore(startMoment)) {
+		// 如果还未进入工作时间, 空进度
+		process = 0;
+		finalText = Array(dayHours).fill(emptyChar).join('');
+	} else if (moment().isSameOrBefore(endMoment)) {
+		// 在工作时间内, 根据时间占比计算
+		const now = moment().valueOf() - startMoment.valueOf();
+		const nowHours = Math.round(now / 1000 / 60 / 60);
+		finalText = Array(nowHours).fill(passedChar).join('') + Array(dayHours - nowHours).fill(emptyChar).join('');
+		process = now / day;
+	} else {
+		// 在工作时间外, 计算额外的占比
+		const now = moment().valueOf() - startMoment.valueOf();
+    console.log('🍭: activate -> now', now);
+		process = now / day;
+	}
+	process = Math.round(process * 100);
+	console.log('🍭: activate -> finalText', finalText);
+	console.log('🍭: activate -> process', process);
+	const statusBarItem: vscode.StatusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 100);
+	context.subscriptions.push(statusBarItem);
+	// statusBarItem.text = '●●●●●●●○○○○▏▏▋▋▊▉▉▉▉▉▉▉▉▉▊▋▌▪️▫️◾️◽️◼️🔲🔳´◎◎◎¤¤¤◎▨▨▨▨▨▥▥▧▧▤▤▦▩▕▁▔▔▔▔▔▔▔▔▁▁▔▁〓〓≡≡▏＝';
+	// statusBarItem.text = '[🀅🀅🀅🀅🀅🀅🀅🀅🀆🀆🀆]🀂🀂🀂🀂';
+	// statusBarItem.text = '{ ▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉ }▉▉▉▉▉';
+	// statusBarItem.color = '#FF6A00';
+	statusBarItem.text = `{${finalText}}[${process}%]`;
+	statusBarItem.show();
 }
 
-// this method is called when your extension is deactivated
 export function deactivate() {}
