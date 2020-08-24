@@ -5,14 +5,14 @@
   "version": "1.0.1",
   "publisher": "HelloFitz",
   "keywords": ["vscode", "work", "clock", "percent", "process"],
-  "icon": "https://github.com/ifibercc/workClock/tree/master/images/icon.png",
+  "icon": "images/icon.png",
   "author": {
     "name": "Fitz",
     "email": "ifibercc@gmail.com"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ifibercc/workClock.git"
+    "url": "https://github.com/ifibercc/workClock.git"
   },
   "engines": {
     "vscode": "^1.48.0"
