@@ -3,12 +3,14 @@ export default (displaySymbol: any) => {
     circle: {
       emptyChar: '○',
       passedChar: '●',
-      tiredChar: '◎'
+      halfChar: '◐',
+      tiredChar: '◎',
     },
     mahjong: {
       emptyChar: '🀆',
       passedChar: '🀅',
-      tiredChar: '🀂'
+      halfChar: '🀇',
+      tiredChar: '🀂',
     }
   };
   return schema[displaySymbol];

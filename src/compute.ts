@@ -28,8 +28,8 @@ export default () => {
 	} else if (moment().isSameOrBefore(endMoment)) {
 		// 在工作时间内, 根据时间占比计算
 		const now = moment().valueOf() - startMoment.valueOf();
-		const nowHours = Math.round(now / 1000 / 60 / 60);
-		processBar = Array(nowHours).fill(processSymbol.passedChar).join('') + Array(dayHours - nowHours).fill(processSymbol.emptyChar).join('');
+		const nowHours = Math.floor(now / 1000 / 60 / 60);
+		processBar = Array(nowHours).fill(processSymbol.passedChar).join('') + processSymbol.halfChar + Array(dayHours - nowHours - 1).fill(processSymbol.emptyChar).join('');
 		processNum = now / day;
 	} else {
 		// 在工作时间外, 计算额外的占比
